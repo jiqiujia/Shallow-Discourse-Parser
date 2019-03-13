@@ -118,7 +118,7 @@ class ImplicitTrain:
 	def production_rules(self, index, parse_dict, parsetree):
 	    arg1_production_rule_dict = parse_dict[0]
 	    arg2_production_rule_dict = parse_dict[1]
-	    both_procution_rule_dict = parse_dict[2] 
+	    both_production_rule_dict = parse_dict[2]
 	    arg1_parsetree = parsetree[0]
 	    arg2_parsetree = parsetree[1]
 
@@ -254,7 +254,7 @@ class ImplicitTrain:
 				if num_sense != -1:
 					feature.append( (tmp_feature,  num_sense) )
 		end=time.time()
-		print 'extracting feature finished...'
+		print('extracting feature finished...')
 		start = time.time()
 
 		try:

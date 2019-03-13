@@ -151,7 +151,7 @@ def get_productions():
 
 	syntax_tree = Tree.fromstring(arg1_parsetree[0])
 	for pr in syntax_tree.productions():
-		print convert_str_format(str(pr))
+		print (convert_str_format(str(pr)))
 
 def load_dependency_rule_dict(file_name, length = -1):
 	dependency_rule_dict = {}
@@ -211,14 +211,14 @@ def write_parse_tree_to_file(file_name):
 		% arg1_sent_file_path )
 	end = time.time()
 
-	print 'extracting parse tree of all arg1 cost %f' % (end-start)
+	print ('extracting parse tree of all arg1 cost %f' % (end-start))
 
 	start = time.time()
 	os.system( 'java -jar lib/BerkeleyParser-1.7.jar -gr lib/eng_sm6.gr -inputFile %s -outputFile tmp/arg2_parsetree.txt'
 		% arg2_sent_file_path )
 	end = time.time()
 
-	print 'extracting parse tree of all arg2 cost %f' % (end-start)
+	print ('extracting parse tree of all arg2 cost %f' % (end-start))
 
 def get_word_pair_from_file_with_count(fname):
 	all_relations = read_data(fname)
@@ -354,13 +354,13 @@ def write_dependency_rule_by_line(file_name):
 						dep_rule_for_one_relation.append( '%s<-%s' % \
 							(t.nodes[node]['word'],	' '.join( [ key for key, val in t.nodes[node]['deps'].items() ] )))	
 			if count == line_interval[line_interval_idx][1] - 1:
-				print '%d: (%d, %d) finished' % (line_interval_idx, line_interval[line_interval_idx][0], line_interval[line_interval_idx][1])
+				print ('%d: (%d, %d) finished' % (line_interval_idx, line_interval[line_interval_idx][0], line_interval[line_interval_idx][1]))
 				line_interval_idx += 1
 				dep_rule_list.append(dep_rule_for_one_relation)
 				dep_rule_for_one_relation = []
 			
 			count += 1
-		print 'actual parse result no : %d' % acutal_result_no
+		print ('actual parse result no : %d' % acutal_result_no)
 		# last relation
 		#print '%d: (%d, %d) finished' % (line_interval_idx, line_interval[line_interval_idx][0], line_interval[line_interval_idx][1])
 		#line_interval_idx += 1
@@ -394,7 +394,7 @@ def deal_with_rest_data():
 						data.append(line)
 						stat[s] += 1
 						break
-	print stat
+	print (stat)
 	with codecs.open('rest.json', 'w', encoding='utf8',errors='ignore') as file:
 		file.write(''.join(data))
 
@@ -410,12 +410,12 @@ def combine():
 	for line in trainf:
 		cnt += 1
 		res.write(line)
-	print cnt
+	print (cnt)
 	res.write('\n')
 	for line in devf:
 		res.write(line)
 		cnt += 1
-	print cnt
+	print (cnt)
 	res.close()
 
 if __name__ == '__main__':
